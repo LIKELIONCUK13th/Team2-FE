@@ -7,11 +7,9 @@
   font-size: 21px;
   color: #333;
   box-sizing: border-box;
+  padding: 0 32px 80px;
 }
 
-
-
-/* 타이틀 */
 .output-title {
   font-size: 2.85rem;
   font-weight: bold;
@@ -33,7 +31,6 @@
   border-radius: 2px;
 }
 
-/* 모니터 형태 */
 .monitor-container-output {
   width: 100%;
   margin: 15px 0 0;
@@ -78,7 +75,6 @@
   border-radius: 4px;
 }
 
-/* 버튼 */
 .btn-wrapper {
   display: flex;
   justify-content: center;

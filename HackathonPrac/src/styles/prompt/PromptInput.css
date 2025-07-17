@@ -7,11 +7,11 @@
   font-size: 21px; /* 18px → 21px */
   color: #333;
   box-sizing: border-box;
+  padding: 0 32px 80px;
 }
 
-/* 타이틀 */
 .prompt-title {
-  font-size: 2.85rem; /* 2.6rem → 2.85rem */
+  font-size: 2.85rem;
   font-weight: bold;
   margin-bottom: 40px;
   position: relative;
@@ -26,32 +26,29 @@
   top: 50%;
   transform: translateY(-50%);
   width: 12px;
-  height: 1.2em; /* 더 높은 글자 크기에 맞춰 증가 */
+  height: 1.2em;
   background-color: #A8B5D8;
   border-radius: 2px;
 }
 
-/* 섹션 공통 */
 .prompt-section {
   margin-bottom: 40px;
   text-align: left;
 }
 
-/* 라벨 (소제목) */
 .prompt-label {
-  font-size: 1.68rem; /* 1.5rem → 약 3px 증가 */
+  font-size: 1.68rem;
   font-weight: 600;
   margin-bottom: 12px;
   display: inline-block;
 }
 
-/* 물음표 도움말 */
 .prompt-help {
   margin-left: 15px;
   cursor: pointer;
   font-weight: bold;
   color: #A8B5D8;
-  font-size: 1.58rem; /* 1.4rem → +3px */
+  font-size: 1.58rem;
 }
 
 .prompt-help-text {
@@ -59,34 +56,30 @@
   padding: 10px 14px;
   border-radius: 6px;
   margin: 8px 0;
-  font-size: 1.42rem; /* 1.25rem → +3px */
+  font-size: 1.42rem;
   color: #4a5c8f;
 }
 
-/* 라디오 옵션 */
 .prompt-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 60px; /* 기존보다 더 넓은 간격으로 조절 (예: 20px → 32px) */
+  gap: 60px;
 }
 
 .prompt-options label {
   display: flex;
   align-items: center;
   gap: 3px;
-  font-size: 1.58rem; /* 1.4rem → +3px */
+  font-size: 1.58rem;
 }
 
-
-/* 기타 입력 필드 */
 .prompt-input-custom {
   padding: 6px 12px;
-  font-size: 1.48rem; /* 1.3rem → +3px */
+  font-size: 1.48rem;
   border: 3px solid #A8B5D8;
   border-radius: 7px;
 }
 
-/* 모니터형 입력박스 */
 .monitor-container {
   width: 100%;
   margin: 15px 0 0;
@@ -129,7 +122,6 @@
   border-radius: 4px;
 }
 
-/* 버튼 */
 .btn-wrapper {
   display: flex;
   justify-content: center;

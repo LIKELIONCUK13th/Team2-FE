@@ -37,7 +37,23 @@ export default function PromptInput() {
     };
 
     // 백엔드 요청 없이 예시 데이터 사용
-    const generatedPrompt = "예시 답변입니다.";
+    const generatedPrompt = `
+      운영체제를 처음 배우는 대학생의 입장에서, 아래 내용을 중심으로 간결하게 정리해줘.
+
+      1. 운영체제란 무엇인가?
+      2. 주요 기능 4가지 이상 (간단한 설명 포함)
+      3. 프로세스 vs 스레드
+      4. 메모리 관리 기법 요약 (페이징, 세그멘테이션 등)
+      5. CPU 스케줄링 알고리즘 (FCFS, SJF, RR, Priority 등)
+      6. 동기화 문제와 해결 방법 (뮤텍스, 세마포어 등)
+      7. 데드락의 조건과 해결 방법
+      8. 파일 시스템의 기본 구조와 개념
+
+      각 항목은 최대한 이해하기 쉽게 요약해줘.  
+      항목별로 번호를 붙여 정리해줘.  
+      핵심 개념 + 비유나 예시 포함되면 좋아.
+      `;
+
     navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
 
 
