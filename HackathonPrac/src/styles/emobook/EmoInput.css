@@ -1,0 +1,64 @@
+.emo-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 입력창과 버튼만 가운데 정렬 */
+}
+
+.emo-container {
+    display: flex;
+    flex-direction: column;
+    font-family: "Noto Sans KR", sans-serif;
+    padding: 20px;
+    align-items: left;
+}
+
+.EmoBook-title {
+    font-size: 2.85rem;
+    font-weight: bold;
+    margin-bottom: 50px;
+    position: relative;
+    padding-left: 10px;
+    line-height: 0;
+    top: -90px;
+    align-self: flex-start; /* 추가 */
+}
+
+.EmoBook-title::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 40px;
+    background-color: #4a4fa6;
+    margin-right: 10px;
+}
+
+.emo-container input[type="text"] {
+    padding: 15px;
+    width: 400px;
+    font-size: 16px;
+    border: 4px solid #4a4fa6;
+    border-radius: 5px;
+    margin-bottom: 100px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.emo-container input[type="text"]:focus {
+    border-color: #2e36a0;
+}
+
+.emo-container button {
+    padding: 12px 24px;
+    background-color: #4a4fa6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 140px;
+}
+
+.emo-container button:hover {
+    background-color: #3a3f91;
+}
