@@ -36,45 +36,45 @@ export default function PromptInput() {
       question: question,
     };
 
-    // 백엔드 요청 없이 예시 데이터 사용
-    const generatedPrompt = `
-      운영체제를 처음 배우는 대학생의 입장에서, 아래 내용을 중심으로 간결하게 정리해줘.
+    // 백엔드 연결 X, 예시 데이터
+    // const generatedPrompt = `
+    //   운영체제를 처음 배우는 대학생의 입장에서, 아래 내용을 중심으로 간결하게 정리해줘.
 
-      1. 운영체제란 무엇인가?
-      2. 주요 기능 4가지 이상 (간단한 설명 포함)
-      3. 프로세스 vs 스레드
-      4. 메모리 관리 기법 요약 (페이징, 세그멘테이션 등)
-      5. CPU 스케줄링 알고리즘 (FCFS, SJF, RR, Priority 등)
-      6. 동기화 문제와 해결 방법 (뮤텍스, 세마포어 등)
-      7. 데드락의 조건과 해결 방법
-      8. 파일 시스템의 기본 구조와 개념
+    //   1. 운영체제란 무엇인가?
+    //   2. 주요 기능 4가지 이상 (간단한 설명 포함)
+    //   3. 프로세스 vs 스레드
+    //   4. 메모리 관리 기법 요약 (페이징, 세그멘테이션 등)
+    //   5. CPU 스케줄링 알고리즘 (FCFS, SJF, RR, Priority 등)
+    //   6. 동기화 문제와 해결 방법 (뮤텍스, 세마포어 등)
+    //   7. 데드락의 조건과 해결 방법
+    //   8. 파일 시스템의 기본 구조와 개념
 
-      각 항목은 최대한 이해하기 쉽게 요약해줘.  
-      항목별로 번호를 붙여 정리해줘.  
-      핵심 개념 + 비유나 예시 포함되면 좋아.
-      `;
+    //   각 항목은 최대한 이해하기 쉽게 요약해줘.  
+    //   항목별로 번호를 붙여 정리해줘.  
+    //   핵심 개념 + 비유나 예시 포함되면 좋아.
+    //   `;
 
-    navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
+    // navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
 
 
     // ******** 백엔드 통신시 사용할 코드! 절대 삭제 X ********
-    // try {
-    //   const response = await fetch("/api/prompt/posts", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(requestBody),
-    //   });
+    try {
+      const response = await fetch("http://localhost:8080/api/prompt/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
 
-    //   const data = await response.json();
-    //   const generatedPrompt = data.answer; // 백엔드에서 { answer: "..." } 형태로 반환된다고 가정
+      const data = await response.json();
+      const generatedPrompt = data.answer; // 백엔드에서 { answer: "..." } 형태로 반환!
 
-    //   navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
-    // } catch (error) {
-    //   alert("프롬프트 생성 중 오류가 발생했습니다.");
-    //   console.error(error);
-    // }
+      navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
+    } catch (error) {
+      alert("프롬프트 생성 중 오류가 발생했습니다.");
+      console.error(error);
+    }
   };
 
   return (
