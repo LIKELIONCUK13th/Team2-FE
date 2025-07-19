@@ -36,46 +36,59 @@ export default function PromptInput() {
       question: question,
     };
 
-    // 백엔드 연결 X, 예시 데이터
-    // const generatedPrompt = `
-    //   운영체제를 처음 배우는 대학생의 입장에서, 아래 내용을 중심으로 간결하게 정리해줘.
-
-    //   1. 운영체제란 무엇인가?
-    //   2. 주요 기능 4가지 이상 (간단한 설명 포함)
-    //   3. 프로세스 vs 스레드
-    //   4. 메모리 관리 기법 요약 (페이징, 세그멘테이션 등)
-    //   5. CPU 스케줄링 알고리즘 (FCFS, SJF, RR, Priority 등)
-    //   6. 동기화 문제와 해결 방법 (뮤텍스, 세마포어 등)
-    //   7. 데드락의 조건과 해결 방법
-    //   8. 파일 시스템의 기본 구조와 개념
-
-    //   각 항목은 최대한 이해하기 쉽게 요약해줘.  
-    //   항목별로 번호를 붙여 정리해줘.  
-    //   핵심 개념 + 비유나 예시 포함되면 좋아.
-    //   `;
-
-    // navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
+    // ******** 백엔드 연결 X, 예시 데이터 ********
+    const generatedPrompt = `
+    [System]
+    당신은 대학에서 운영체제 과목을 강의하는 교수입니다.
+      
+    [User]
+    운영체제 과목을 다음 8개 키워드를 기반으로 정리해주세요.
+    
+    1. 프로세스
+    2. 스레드
+    3. CPU 스케줄링
+    ...
+    `;
+    navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
 
 
-    // ******** 백엔드 통신시 사용할 코드! 절대 삭제 X ********
-    try {
-      const response = await fetch("http://localhost:8080/api/prompt/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      });
+    // ******** 백엔드 연결시 사용! ******** // 로컬 통신 성공
+    // console.log("[디버깅] 요청할 JSON 데이터:", requestBody);
 
-      const data = await response.json();
-      const generatedPrompt = data.answer; // 백엔드에서 { answer: "..." } 형태로 반환!
+    // try {
+    //   const response = await fetch("http://localhost:8080/api/prompt/posts", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(requestBody),
+    //   });
 
-      navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
-    } catch (error) {
-      alert("프롬프트 생성 중 오류가 발생했습니다.");
-      console.error(error);
-    }
-  };
+    //   console.log("[디버깅] 응답 상태 코드:", response.status);
+
+    //   if (!response.ok) {
+    //     const errorText = await response.text();
+    //     console.error("[디버깅] 오류 응답 내용:", errorText);
+    //     alert(`서버 오류 발생: ${response.status}`);
+    //     return;
+    //   }
+
+    //   const data = await response.json();
+    //   console.log("[디버깅] 응답 받은 데이터:", data);
+
+    //   if (!data.answer) {
+    //     alert("응답에 'answer' 필드가 없습니다.");
+    //     return;
+    //   }
+
+    //   const generatedPrompt = data.answer;
+
+    //   navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
+    // } catch (error) {
+    //   alert("프롬프트 생성 중 오류가 발생했습니다.");
+    //   console.error("[디버깅] 예외 발생:", error);
+    // }
+};
 
   return (
     <div className="prompt-container">
