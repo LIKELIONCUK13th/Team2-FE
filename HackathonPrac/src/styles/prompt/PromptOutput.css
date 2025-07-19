@@ -1,0 +1,102 @@
+.output-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 32px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 21px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+
+
+/* 타이틀 */
+.output-title {
+  font-size: 2.85rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  position: relative;
+  padding-left: 20px;
+  line-height: 1.2;
+}
+
+.output-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 1.2em;
+  background-color: #A8B5D8;
+  border-radius: 2px;
+}
+
+/* 모니터 형태 */
+.monitor-container-output {
+  width: 100%;
+  margin: 15px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monitor-screen-output {
+  width: 100%;
+  max-width: 1150px;
+  min-height: 700px;
+  padding: 24px;
+  font-size: 1.58rem;
+  border: 20px solid #A8B5D8;
+  border-radius: 20px;
+  background-color: white;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  white-space: pre-wrap;
+}
+
+.monitor-screen-output:focus {
+  outline: none;
+}
+
+
+.monitor-neck {
+  width: 80px;
+  height: 70px;
+  background-color: #A8B5D8;
+  margin-top: -8px;
+  border-radius: 4px;
+}
+
+.monitor-stand {
+  width: 360px;
+  height: 30px;
+  background-color: #A8B5D8;
+  margin-top: -8px;
+  border-radius: 4px;
+}
+
+/* 버튼 */
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.prompt-btn {
+  background-color: #A8B5D8;
+  color: white;
+  padding: 18px 42px;
+  font-size: 25px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.prompt-btn:hover {
+  background-color: #8ea7d8;
+}
