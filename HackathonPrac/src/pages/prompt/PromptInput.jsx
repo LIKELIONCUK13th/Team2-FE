@@ -37,57 +37,55 @@ export default function PromptInput() {
     };
 
     // ******** 백엔드 연결 X, 예시 데이터 ********
-    const generatedPrompt = `
-    [System]
-    당신은 대학에서 운영체제 과목을 강의하는 교수입니다.
+    // const generatedPrompt = `
+    // [System]
+    // 당신은 대학에서 운영체제 과목을 강의하는 교수입니다.
       
-    [User]
-    운영체제 과목을 다음 8개 키워드를 기반으로 정리해주세요.
+    // [User]
+    // 운영체제 과목을 다음 8개 키워드를 기반으로 정리해주세요.
     
-    1. 프로세스
-    2. 스레드
-    3. CPU 스케줄링
-    ...
-    `;
-    navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
+    // 1. 프로세스
+    // 2. 스레드
+    // 3. CPU 스케줄링
+    // ...
+    // `;
+    // navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
 
 
     // ******** 백엔드 연결시 사용! ******** // 로컬 통신 성공
-    // console.log("[디버깅] 요청할 JSON 데이터:", requestBody);
+    try {
+      const response = await fetch("http://3.106.170.223:8080/api/prompt/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
 
-    // try {
-    //   const response = await fetch("http://localhost:8080/api/prompt/posts", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(requestBody),
-    //   });
+      console.log("[디버깅] 응답 상태 코드:", response.status);
 
-    //   console.log("[디버깅] 응답 상태 코드:", response.status);
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("[디버깅] 오류 응답 내용:", errorText);
+        alert(`서버 오류 발생: ${response.status}`);
+        return;
+      }
 
-    //   if (!response.ok) {
-    //     const errorText = await response.text();
-    //     console.error("[디버깅] 오류 응답 내용:", errorText);
-    //     alert(`서버 오류 발생: ${response.status}`);
-    //     return;
-    //   }
+      const data = await response.json();
+      console.log("[디버깅] 응답 받은 데이터:", data);
 
-    //   const data = await response.json();
-    //   console.log("[디버깅] 응답 받은 데이터:", data);
+      if (!data.answer) {
+        alert("응답에 'answer' 필드가 없습니다.");
+        return;
+      }
 
-    //   if (!data.answer) {
-    //     alert("응답에 'answer' 필드가 없습니다.");
-    //     return;
-    //   }
+      const generatedPrompt = data.answer;
 
-    //   const generatedPrompt = data.answer;
-
-    //   navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
-    // } catch (error) {
-    //   alert("프롬프트 생성 중 오류가 발생했습니다.");
-    //   console.error("[디버깅] 예외 발생:", error);
-    // }
+      navigate("/PromptOutput", { state: { prompt: generatedPrompt } });
+    } catch (error) {
+      alert("프롬프트 생성 중 오류가 발생했습니다.");
+      console.error("[디버깅] 예외 발생:", error);
+    }
 };
 
   return (
